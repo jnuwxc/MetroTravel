@@ -62,6 +62,9 @@
             }
             else {
                 this.gameStart = true;
+                let txt = this.owner.getChildByName("startText");
+                txt.removeSelf();
+                console.log("游戏开始");
             }
         }
         onUpdate() {
