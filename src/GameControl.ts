@@ -41,7 +41,7 @@ export default class GameControl extends Laya.Script{
             this.moveY = this.pxs * this.bg.getMoveY(this.angle);
         }else{
             this.gameStart = true;
-            let txt = this.owner.getChildByName("startText");
+            let txt: Laya.Text = this.owner.getChildByName("startText") as Laya.Text;
             txt.removeSelf();
             console.log("游戏开始");
         }

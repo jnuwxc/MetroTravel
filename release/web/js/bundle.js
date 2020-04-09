@@ -131,10 +131,12 @@
         onConfigLoaded() {
             let txt = new Laya.Text();
             txt.text = "L O A D I N G ...";
-            txt.width = 400;
-            txt.height = 200;
+            txt.width = 640;
+            txt.height = 1138;
             txt.color = "#cc0000";
-            txt.pos(Laya.stage.width >> 2 - 200, Laya.stage.height >> 2 - 100);
+            txt.fontSize = 40;
+            txt.align = "center";
+            txt.valign = "middle";
             Laya.stage.addChild(txt);
             GameConfig.startScene && Laya.Scene.open(GameConfig.startScene);
         }
