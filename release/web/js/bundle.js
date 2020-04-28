@@ -37,7 +37,8 @@
             super();
             this.height = Laya.stage.height;
             this.width = Laya.stage.width;
-            this.pxs = 3.5;
+            this.pxs = 3;
+            this.metroImg = { 30: this.metro30, 150: this.metro150, 210: this.metro210, 330: this.metro330 };
         }
         onEnable() {
             this.bgImg = this.owner.getChildByName("bg");
@@ -49,9 +50,15 @@
             this.moveX = this.pxs * this.bg.getMoveX(this.angle);
             this.moveY = this.pxs * this.bg.getMoveY(this.angle);
             this.gameStart = false;
+            this.metroImg[30] = this.owner.getChildByName("metro30");
+            this.metroImg[150] = this.owner.getChildByName("metro150");
+            this.metroImg[210] = this.owner.getChildByName("metro210");
+            this.metroImg[330] = this.owner.getChildByName("metro330");
+            this.metroImg[30].visible = this.metroImg[150].visible = this.metroImg[330].visible = false;
         }
         onClick() {
             if (this.gameStart) {
+                this.metroImg[this.angle].visible = false;
                 this.moveI++;
                 if (this.moveI % 30 == 0) {
                     this.pxs += 0.3;
@@ -59,6 +66,7 @@
                 this.angle = this.bg.getDirection(this.moveI);
                 this.moveX = this.pxs * this.bg.getMoveX(this.angle);
                 this.moveY = this.pxs * this.bg.getMoveY(this.angle);
+                this.metroImg[this.angle].visible = true;
             }
             else {
                 this.gameStart = true;
@@ -133,7 +141,7 @@
         }
         onConfigLoaded() {
             let txt = new Laya.Text();
-            txt.text = "L O A D I N G ...";
+            txt.text = "L O A D I N G ... \n 大概等待5s";
             txt.width = 640;
             txt.height = 1138;
             txt.color = "#cc0000";

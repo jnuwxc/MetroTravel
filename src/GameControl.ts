@@ -8,11 +8,18 @@ export default class GameControl extends Laya.Script{
     bgx: number; //背景的坐标
     bgy: number;
     moveI: number; //转弯次数
-    pxs: number = 3.5;//每帧移动多少像素
+    pxs: number = 3;//每帧移动多少像素
     angle: number; //当前路径的角度
     moveX: number; //当前路径下x每次移动的像素
     moveY: number; //当前路径下y每次移动的像素
     gameStart: boolean; //游戏是否已经开始
+
+    metro30: Laya.Sprite;
+    metro150: Laya.Sprite;
+    metro210: Laya.Sprite;
+    metro330: Laya.Sprite;
+    metroImg: {[angle: number]: Laya.Sprite} = {30: this.metro30, 150: this.metro150, 210: this.metro210, 330: this.metro330};
+
 
     constructor(){
         super();
@@ -28,10 +35,17 @@ export default class GameControl extends Laya.Script{
         this.moveX = this.pxs * this.bg.getMoveX(this.angle);
         this.moveY = this.pxs * this.bg.getMoveY(this.angle);
         this.gameStart = false;
+
+        this.metroImg[30] = this.owner.getChildByName("metro30") as Laya.Sprite;
+        this.metroImg[150] = this.owner.getChildByName("metro150") as Laya.Sprite;
+        this.metroImg[210] = this.owner.getChildByName("metro210") as Laya.Sprite;
+        this.metroImg[330] = this.owner.getChildByName("metro330") as Laya.Sprite;
+        this.metroImg[30].visible = this.metroImg[150].visible = this.metroImg[330].visible = false;
     }
 
     onClick(){
         if(this.gameStart){
+            this.metroImg[this.angle].visible = false;
             this.moveI++;
             if(this.moveI % 30 == 0){
                 this.pxs += 0.3;
@@ -39,6 +53,7 @@ export default class GameControl extends Laya.Script{
             this.angle = this.bg.getDirection(this.moveI);
             this.moveX = this.pxs * this.bg.getMoveX(this.angle);
             this.moveY = this.pxs * this.bg.getMoveY(this.angle);
+            this.metroImg[this.angle].visible = true;
         }else{
             this.gameStart = true;
             let txt: Laya.Text = this.owner.getChildByName("startText") as Laya.Text;

@@ -31,7 +31,7 @@ class Main {
 	onConfigLoaded(): void {
 		//加载场景之前显示提示信息
 		let txt: Laya.Text = new Laya.Text();
-		txt.text = "L O A D I N G ...";
+		txt.text = "L O A D I N G ... \n 大概等待5s";
 		txt.width = 640;
 		txt.height = 1138;
 		txt.color = "#cc0000";
