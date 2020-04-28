@@ -64,7 +64,7 @@
             "x":15,
             "type":"TextArea",
             "searchKey":"TextArea,startText",
-            "props":{"y":0,"x":0,"width":640,"valign":"middle","text":"轻点屏幕开始游戏","name":"startText","height":1138,"fontSize":50,"font":"SimHei","editable":false,"color":"#cc0000","bgColor":"#b7b7b7","alpha":0.4,"align":"center"},
+            "props":{"y":0,"x":0,"width":640,"valign":"middle","text":"轻点屏幕开始游戏","name":"startText","height":1138,"fontSize":50,"font":"SimHei","editable":false,"color":"#cc0000","bgColor":"#b7b7b7","alpha":0.5,"align":"center"},
             "nodeParent":2,
             "label":"startText",
             "isDirectory":false,
