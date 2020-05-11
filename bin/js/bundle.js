@@ -40,6 +40,7 @@
             this.pxs = 3.5;
         }
         onEnable() {
+            console.log("version 1.0");
             this.bgImg = this.owner.getChildByName("bg");
             this.bgx = this.bgImg.x;
             this.bgy = this.bgImg.y;

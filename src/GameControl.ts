@@ -19,6 +19,7 @@ export default class GameControl extends Laya.Script{
     }
 
     onEnable(){
+        console.log("version 1.0");
         this.bgImg = this.owner.getChildByName("bg") as Laya.Sprite;
         this.bgx = this.bgImg.x;
         this.bgy = this.bgImg.y;
